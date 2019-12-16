@@ -1,28 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Nav/>
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
+    <Footer/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Nav from "./components/Nav"
+import Footer from "./components/Footer"
 export default {
+
   name: 'app',
   components: {
-    HelloWorld
+    Nav,Footer
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+ @import './assets//styles/app.module.scss';
+ .hero{
+   background-image: url('~@/assets/img/back.svg');
+   background-position: bottom;
+   background-size: cover;
+   position: relative;
+   min-height: 100vh;
+   overflow: hidden;
+ }
+ .bg-about{
+   background-image: url("~@/assets/img/back2.svg");
+   background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+ }
 </style>
