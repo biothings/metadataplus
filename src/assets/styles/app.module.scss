@@ -4,7 +4,7 @@ $triColor: #444584;
 
 html,body{
   background: darken( $triColor, 10% );
-
+  scroll-behavior: smooth;
 }
 .text-main{
   color: $mainColor !important;
@@ -16,6 +16,28 @@ html,body{
 
 .bg-main-light{
   background: lighten( $mainColor, 10% )
+}
+
+@for $i from 1 through 7 {
+  .howStep:nth-child(#{$i}) {
+      background-color: darken($secColor, ($i - 1) * 3%);
+  }
+}
+
+body>.expandable-image.expanded{
+  background: rgba(0, 0, 0, 60%) !important;
+}
+
+#header{
+  transition: all .5s;
+}
+
+.bg-grad{
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#444584+1,ff616d+48,444584+100&0+0,1+49,0+100 */
+  background: -moz-linear-gradient(left,  rgba($mainColor,0) 0%, rgba($mainColor,0.02) 1%, rgba($secColor,0.98) 48%, rgba($secColor,1) 49%, rgba($mainColor,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba($mainColor,0) 0%,rgba($mainColor,0.02) 1%,rgba($secColor,0.98) 48%,rgba($secColor,1) 49%,rgba($mainColor,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba($mainColor,0) 0%,rgba($mainColor,0.02) 1%,rgba($secColor,0.98) 48%,rgba($secColor,1) 49%,rgba($mainColor,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00444584', endColorstr='#00444584',GradientType=1 ); /* IE6-9 */
 }
 
 p{

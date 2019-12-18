@@ -1,5 +1,10 @@
 <template>
   <div class="jumbotron bg-main hero m-0 mt-5" style="background-image: url('~@/assets/img/back.svg');">
+    <div class="container p-2">
+      <p class="text-right">
+        <a class="text-sec font-weight-bold" target="_blank" rel="noreferrer" href="https://github.com/biothings/metadataplus/issues">Suggest New Source</a>
+      </p>
+    </div>
     <div class="container text-light bg-about">
       <h1 class="text-sec">
         About <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 841 930" width="200" height="200">
@@ -21,55 +26,161 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </div>
-    <div class="row" data-aos="fade-in">
-      <div class="col-sm-12 col-md-4 m-auto">
-        <img src="@/assets/img/spider.svg" class="w-100 p-3">
+    <div class="container text-light" data-aos="fade-in">
+      <p>
+        <img alt="metadata injection" src="../assets/img/inject.svg" class="w-100"/>
+      </p>
+      <h1 class="text-sec mt-5 mb-5 text-center" id="how-it-works">HOW DOES IT WORK?</h1>
+      <div class="howContainer">
+        <!-- Step -->
+        <div class="jumbotron m-0 howStep">
+          <div class="container row m-auto">
+            <div class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">
+              <h1 class="text-light">1</h1>
+            </div>
+            <div class="col-sm-12 col-md-7 d-flex justify-content-center align-items-center">
+              <figure>
+                <expandable-image alt="metadata injection" :src="require('../assets/img/1.jpg')" class="w-100"/>
+                <figcaption class="text-center">
+                  <small>
+                    <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878" rel="noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878</a>
+                  </small>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
+              <div data-aos="zoom-out">
+                <p>
+                  For Example: <a href="https://www.ncbi.nlm.nih.gov/geo/" rel="noreferrer" target="_blank">NCBI GEO</a> makes dataset metadata available via web pages we can systematically visit using a provided sitemap.
+                </p>
+                <p>
+                  However, without a known structure computers can understand the information displayed can only be understood by humans.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Step -->
+        <div class="jumbotron m-0 howStep">
+          <div class="container row m-auto">
+            <div class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">
+              <h1 class="text-light">2</h1>
+            </div>
+            <div class="col-sm-12 col-md-7 d-flex justify-content-center align-items-center">
+              <figure>
+                <expandable-image alt="metadata injection" :src="require('../assets/img/1.jpg')" class="w-100"/>
+                <figcaption class="text-center">
+                  <small>
+                    <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878" rel="noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878</a>
+                  </small>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
+              <div data-aos="zoom-out">
+                <p>
+                  For websites that do not have structured metadata embedded, it is possible to scrape the website by its HTML structure, and define a transformation to format the dataset metadata to a standard.
+                </p>
+                <p>
+                  After translation, we can also inject the structured metadata back to the page and serve it publicly so that search engines and other users can understand the page with more clues about its content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Step -->
+        <div class="jumbotron m-0 howStep">
+          <div class="container row m-auto">
+            <div class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">
+              <h1 class="text-light">3</h1>
+            </div>
+            <div class="col-sm-12 col-md-7 d-flex justify-content-center align-items-center">
+              <figure>
+                <expandable-image alt="metadata injection" :src="require('../assets/img/1.jpg')" class="w-100"/>
+                <figcaption class="text-center">
+                  <small>
+                    <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878" rel="noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878</a>
+                  </small>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
+              <div data-aos="zoom-out">
+                <p>
+                  For websites that do not have structured metadata embedded, it is possible to scrape the website by its HTML structure, and define a transformation to format the dataset metadata to a standard.
+                </p>
+                <p>
+                  After translation, we can also inject the structured metadata back to the page and serve it publicly so that search engines and other users can understand the page with more clues about its content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-    <div class="container text-light" data-aos="fade-in">
-      <h1 class="text-sec">Crawling For Metadata</h1>
+    <div class="mt-5 mb-5 bg-grad text-center text-light pt-5 pb-5">
+      <div class="row" data-aos="fade-in">
+        <div class="col-sm-12 col-md-6 m-auto">
+          <img src="@/assets/img/addnew.svg" class="w-100 p-3">
+        </div>
+      </div>
+      <h3 class="m-3">Suggest A New Source</h3>
       <p>
-        WebSpider is a program that visits websites systematically to retrieve dataset metadata information. It can find pages to crawl in a website through URL patterns, following links from a starting page or iterating through a sitemap, or a list of pages provided by the website. Review the source code that powers our crawling of over 60,000 datasets hosted on Zenodo, Harvard Dataverse, NCBI Geo and Omicsdi here: <a href="https://github.com/biothings/biothings.crawler/tree/master/crawler/spiders" target="_blank" rel="noreferrer">https://github.com/biothings/biothings.crawler/tree/master/crawler/spiders</a>
-      </p>
-      <p>
-        After crawling, we will have the data in a local database to perform a variety of analysis. See what harvested metadata look like with BioThings API here: <a href="http://discovery.biothings.io/dataset/geo/api/query?q=__any__ " target="_blank" rel="
-        ">http://discovery.biothings.io/dataset/geo/api/query?q=__any__ </a>
-      </p>
-      <p>
-        <img alt="metadata injection" src="../assets/img/inject.svg" class="w-100 bg-main-light"/>
-      </p>
-      <p>
-        For websites that do not have structured metadata embedded, it is possible to scrape the website by its HTML structure, and define a transformation to format the dataset metadata to a standard.
-      </p>
-      <p>
-        After translation, we can also inject the structured metadata back to the page and serve it publicly so that search engines and other users can understand the page with more clues about its content.
-      </p>
-      <p>
-        <a rel="noreferrer" href="https://discovery.biothings.io:8088/_random.html?redirect" target="_blank">
-          <i class="fas fa-clone left"></i> Click here
-        </a> to see an example of how we injected structured metadata to an NCBI GEO page.
+        <a class="btn btn-outline-light" target="_blank" rel="noreferrer" href="https://github.com/biothings/metadataplus/issues" data-size="large" aria-label="Issue biothings/metadataplus on GitHub">Click Here</a>
       </p>
     </div>
-    <div class="row" data-aos="fade-in">
+    <!-- <div class="row mt-5 mb-5" data-aos="fade-in">
       <div class="col-sm-12 col-md-6 m-auto">
         <img src="@/assets/img/dde.svg" class="w-100 p-3">
       </div>
     </div>
-    <div class="container text-light" data-aos="fade-in">
-      <h1 class="text-sec">Schema Creation and Metadata Discovery</h1>
+    <div class="container mt-5 mb-5 text-light" data-aos="fade-in">
+      <h1 class="text-sec mt-5 mb-5">Schema Creation and Metadata Discovery</h1>
       <p>
         A significant gap exists between the data providers and the data discovery portals where researchers look for relevant datasets. Data providers typically lack sufficient guides to expose their dataset metadata to these data portals. The <a href="https://discovery.biothings.io/" target="_blank" rel="noreferrer">Data Discovery Engine</a> is targeted to streamline and minimize the efforts from data providers while maximizing the data discoverability.
       </p>
       <p>
         The Data Discovery Engine offers easy-to-use tools to create a custom schema and help you make your metadata findable:
       </p>
-      <p>
-        <b class="text-main">Schema Playground</b> to <a href="https://discovery.biothings.io/schema-playground" target="_blank">create a shema</a> based on <a href="https://schema.org/" target="_blank" rel="noreferrer">schema.org</a> standard.
-      </p>
-      <p>
-        <b class="text-main">Best Practices Guide</b> to <a href="https://discovery.biothings.io/best-practices" target="_blank">make your metadata discoverable</a>.
-      </p>
     </div>
+    <div class="container row m-auto">
+      <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
+        <div class="text-center p-3">
+          <img src="../assets/img/editor.png" alt="schema playground" class="w-50 d-block m-auto"/>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center text-light">
+        <div data-aos="zoom-out">
+          <h3 class="text-sec">CREATE: Schema Playground</h3>
+          <p>
+            Choose an existing schema or use tools to easily create a new schema that fits your needs.
+          </p>
+          <p>
+            Learn more <a href="https://discovery.biothings.io/schema-playground" target="_blank" rel="noreferrer">here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="container row m-auto">
+      <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
+        <div class="text-center p-3">
+          <img src="../assets/img/guide.png" alt="best practices" class="w-50 d-block m-auto"/>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center text-light">
+        <div data-aos="zoom-out">
+          <h3 class="text-sec">DISCOVERY: Best Practices Guide</h3>
+          <p>
+            Follow a desired strutured metadata schema based on Schema.org to make your data findable.
+          </p>
+          <p>
+            Learn more <a href="https://discovery.biothings.io/best-practices" target="_blank" rel="noreferrer">here</a>.
+          </p>
+        </div>
+      </div>
+    </div> -->
   </div>
 </template>
 

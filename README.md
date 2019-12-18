@@ -1,4 +1,4 @@
-# niad-app
+# Metadata Plus Site
 
 ## Project setup
 ```

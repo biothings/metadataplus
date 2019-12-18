@@ -36,4 +36,10 @@ export default {
   background-position: center center;
   background-size: contain;
  }
+ .bg-logo{
+   background-image: url("~@/assets/img/background.svg");
+   background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+ }
 </style>

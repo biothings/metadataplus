@@ -3,8 +3,8 @@
   <div class="container-fluid text-center text-md-left">
     <div class="row">
       <div class="col-md-6 mt-md-0 mt-3">
-        <h5 class="text-uppercase text-main">METADATAPLUS</h5>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h5 class="mainFont text-main"><strong>METADATA <span class="text-sec">PLUS</span></strong></h5>
+        <p class="text-muted text-uppercase">Schema.org-Standard Structured Metadata Injector</p>
       </div>
       <hr class="clearfix w-100 d-md-none pb-3">
       <div class="col-md-3 mb-md-0 mb-3">
