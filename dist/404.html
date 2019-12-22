@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+
+<head>
+  <meta name="HandheldFriendly" content="True" />
+  <meta property="og:locale" content="en_US" />
+  <!-- METADATA -->
+  <meta property="og:url" content="http://discovery.biothings.io/">
+  <meta property="og:site_name" content="http://discovery.biothings.io/">
+  <meta property="og:title" content="Data Discovery Engine" />
+  <meta name="description"
+    content="A CD2H PROJECT TO PROMPT FAIR DATA-SHARING BEST PRACTICES & MAXIMIZE THE RESEARCH IMPACT OF CTSA HUBS" />
+  <meta property="og:image" content="https://i.postimg.cc/zvRMbPSs/featured.jpg">
+  <meta property="og:image:type" content="image/jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:type" content="website">
+  <meta property="og:description"
+    content="A CD2H PROJECT TO PROMPT FAIR DATA-SHARING BEST PRACTICES & MAXIMIZE THE RESEARCH IMPACT OF CTSA HUBS">
+  <meta property="fb:app_id" content="" />
+  <meta name="twitter:title" content="CTSA Data Discovery Engine" />
+  <meta name="twitter:image" content="https://i.postimg.cc/zvRMbPSs/featured.jpg" />
+  <meta name="twitter:url" content="http://discovery.biothings.io/" />
+  <meta name="twitter:card" content="summary" />
+  <!-- ICONS -->
+  <link rel="apple-touch-icon" sizes="180x180" href="static/img/dde/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://discovery.biothings.io/static/img/dde/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://discovery.biothings.io/static/img/dde/favicon-16x16.png">
+  <link rel="manifest" href="https://discovery.biothings.io/static/img/dde/site.webmanifest">
+  <link rel="mask-icon" href="https://discovery.biothings.io/static/img/dde/safari-pinned-tab.svg" color="#8824a3">
+  <link rel="shortcut icon" href="https://discovery.biothings.io/static/img/dde/favicon.ico">
+  <meta name="msapplication-TileColor" content="#63296b">
+  <meta name="msapplication-config" content="https://discovery.biothings.io/static/img/dde/browserconfig.xml">
+  <meta name="theme-color" content="#63296b">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link type="text/css" rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://discovery.biothings.io/static/css/styles.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@4/themes/light.css" />
+
+
+</head>
+
+<body class="bg-light">
+
+
+  <style></style>
+  <header id="header">
+    <title>Data Discovery Engine</title>
+    <nav class="navbar navbar-expand-md navbar-dark mainBackDark fixed-top p-3"
+      style="border-bottom: 8px #4A7D8F solid;">
+      <a class="navbar-brand" href="https://discovery.biothings.io">
+        <img alt="logo" height="30" src="https://discovery.biothings.io/static/img/dde-logo-o.svg" width="30">
+      </a>
+      <a class="navbar-brand mainFont caps text-light" href="https://discovery.biothings.io" id="logo">
+        DATA DISCOVERY ENGINE
+      </a>
+      <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+        class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon">
+        </span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <small class="text-muted m-auto font-weight-bold alert alert-light">
+          No such dataset.
+          <a href="{{ redirect_url }}">
+            Try a random one.
+          </a>
+        </small>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link h-link" href="https://discovery.biothings.io/best-practices">
+              Discovery Guide
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link h-link" href="https://discovery.biothings.io/schema-playground">
+              Schema Playground
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <script src="https://discovery.biothings.io/static/js/lodash.js"></script>
+  <script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>
+  <div id="404" class="container d-flex align-items-center" style="min-height:100vh">
+    <div class="jumbotron bg-light text-center text-muted w-100">
+      <h1 style="font-size:5em">404</h1>
+      <h4>Oops! Page Not Found</h4>
+      <img class="m-2 w-50" src="https://discovery.biothings.io/static/img/notfound.svg" alt="page not found" /><br />
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!--Footer-->
+  <style>
+  </style>
+  <footer class="section bg-secondary text-light footer">
+    <div class="container padding20">
+      <div class="d-flex justify-content-around flex-wrap align-items-start">
+        <div class="p-2">
+          <h6 class="text-light">CTSA Data Discovery Engine</h6>
+          <a class="d-block text-light" href="https://discovery.biothings.io/">Home</a>
+          <a class="d-block text-light" href="https://discovery.biothings.io/about">About</a>
+          <a class="d-block text-light" href="https://discovery.biothings.io/faq">FAQ</a>
+          <a class="d-block text-light" href="https://discovery.biothings.io/best-practices">Discovery Guide</a>
+          <a class="d-block text-light" href="https://discovery.biothings.io/schema-playground">Schema Playground</a>
+        </div>
+        <div class="p-2">
+          <h6 class="text-light">Contact US</h6>
+          <a class="d-block text-light" target="_blank" href="mailto:cd2h-metadata@googlegroups.com"><i
+              class="fas fa-envelope"></i> Email</a>
+
+        </div>
+        <div class="p-2">
+          <h6 class="text-light">Contribute</h6>
+          <a class="d-block text-light" target="_blank" href="https://github.com/data2health/rdp-portal"><i
+              class="fab fa-github"></i> GitHub</a>
+
+        </div>
+      </div>
+      <p class="rights text-light text-center" style="margin:0px;">
+        <small>
+          <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <span id="year"></span>
+          Except where otherwise noted, content on this site is licensed under a <a class="text-light"
+            href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0
+            International license</a>.
+        </small>
+      </p>
+    </div>
+  </footer>
+  <script>
+    var currentTime = new Date()
+    var year = currentTime.getFullYear()
+    var myelement = document.getElementById("year");
+    myelement.innerHTML = year;
+  </script>
+
+</body>
+
+</html>

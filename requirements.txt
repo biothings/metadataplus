@@ -1,1 +1,4 @@
-tornado==5.1.1
+git+git://github.com/biothings/biothings.api.git@es7#egg=biothings
+scrapy
+beautifulsoup4
+extruct
