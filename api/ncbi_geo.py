@@ -166,7 +166,7 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
 
         # try to retrieve pre-loaded structured metadata
         try:
-            doc = client.get(id=gse_id, index='ncbi_geo_indexed')
+            doc = client.get(id=gse_id, index=api.config.ES_INDEX)
         except elasticsearch.ElasticsearchException:
             doc = None
         else:
