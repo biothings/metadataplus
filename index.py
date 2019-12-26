@@ -2,20 +2,25 @@
     Metadataplus Server
 
     Elasticsearch 7 is requied as the database server.
-    For local testing, set hostname "localtest" to 127.0.0.1 in the os host file.
+    For local testing, run application with parameter
+        --geo-host=<hostname:port> --server-host=localhost:<port>,
+    And set <hostname> to 127.0.0.1 in the os host file.
 
 '''
 
-import tornado.ioloop
+from sys import platform
+
 import tornado.web
 from biothings.web.settings import BiothingESWebSettings
+from tornado.ioloop import IOLoop
 from tornado.options import define, options
 from tornado.routing import HostMatches
 
 from api import ncbi_geo
 
-define("geo_resource_host", default="localtest:8000", help="hostname for NCBI GEO resource proxy")
-define("server_host", default="localhost:8000", help="hostname for the main app server")
+define("geo_host", default="geo.metadataplus.biothings.io", help="GEO resource proxy hostname")
+define("server_host", default="metadataplus.biothings.io", help="Allowed CORS origin hostname")
+define("port", default="8000", help="local port to run the server")
 options.parse_command_line()
 
 
@@ -26,7 +31,7 @@ class PageNotFoundHandler(tornado.web.RequestHandler):
 
 
 WEB_LIST = [
-    (HostMatches(options.geo_resource_host.split(':')[0]), ncbi_geo.NCBIProxyHandler),
+    (HostMatches(options.geo_host.split(':')[0]), ncbi_geo.NCBIProxyHandler),
     (r"/(|(?:css|js|img)/.*)", tornado.web.StaticFileHandler,
      dict(path="dist", default_filename="index.html")),
     (r"/geo/(GSE\d+)", ncbi_geo.NCBIGeoDatasetWrapper),
@@ -38,11 +43,25 @@ API_SETTINGS = BiothingESWebSettings(config='api.config')
 
 APP_LIST = API_SETTINGS.generate_app_list() + WEB_LIST
 
-if __name__ == '__main__':
+
+def main():
+
     application = tornado.web.Application(
         APP_LIST,
         xheaders=True,
         static_path='dist',
         default_handler_class=PageNotFoundHandler)
-    application.listen(8000)
-    tornado.ioloop.IOLoop.current().start()
+
+    server = tornado.httpserver.HTTPServer(application)
+    server.bind(options.port)
+
+    if platform == "win32":
+        server.start(1)
+    else:
+        server.start(0)  # forks one process per cpu
+
+    IOLoop.current().start()
+
+
+if __name__ == '__main__':
+    main()

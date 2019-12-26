@@ -162,7 +162,7 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
 
         # add resource path redirection
         soup.head.insert(0, soup.new_tag(
-            'base', href='//{}/geo/query/'.format(options.geo_resource_host)))
+            'base', href='//{}/geo/query/'.format(options.geo_host)))
 
         # try to retrieve pre-loaded structured metadata
         try:
