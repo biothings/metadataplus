@@ -6,7 +6,7 @@ from biothings.web.api.es.handlers import QueryHandler
 # *****************************************************************************
 # Elasticsearch
 # *****************************************************************************
-ES_INDEX = os.getenv('ES_INDEX', 'ncbi_geo_indexed')
+ES_INDEX = os.getenv('ES_INDEX', 'indexed_ncbi_geo')
 ES_DOC_TYPE = '_doc'
 ES_HOST = os.getenv("ES_HOST", 'localhost:9200')
 
