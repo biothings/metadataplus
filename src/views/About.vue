@@ -40,10 +40,10 @@
             </div>
             <div class="col-sm-12 col-md-7 d-flex justify-content-center align-items-center">
               <figure>
-                <expandable-image alt="metadata injection" :src="require('../assets/img/1.jpg')" class="w-100"/>
+                <expandable-image alt="metadata source" :src="require('../assets/img/1.jpg')" class="w-100"/>
                 <figcaption class="text-center">
                   <small>
-                    <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878" rel="noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878</a>
+                    <a class="text-light" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878" rel="noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878</a>
                   </small>
                 </figcaption>
               </figure>
@@ -51,10 +51,13 @@
             <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
               <div data-aos="zoom-out">
                 <p>
-                  For Example: <a href="https://www.ncbi.nlm.nih.gov/geo/" rel="noreferrer" target="_blank">NCBI GEO</a> makes dataset metadata available via web pages we can systematically visit using a provided sitemap.
+                  Let's use NCBI <a href="https://www.ncbi.nlm.nih.gov/geo/" rel="noreferrer" target="_blank">GEO</a> as an example.
                 </p>
                 <p>
-                  However, without a known structure computers can understand the information displayed can only be understood by humans.
+                  GEO is a genomics data repository that makes dataset information available via web pages humans can easily read and understand.
+                </p>
+                <p>
+                  However, without a standarized structure computers can't understand the information rendered and valuable efforts could be missed.
                 </p>
               </div>
             </div>
@@ -69,10 +72,10 @@
             </div>
             <div class="col-sm-12 col-md-7 d-flex justify-content-center align-items-center">
               <figure>
-                <expandable-image alt="metadata injection" :src="require('../assets/img/1.jpg')" class="w-100"/>
+                <expandable-image alt="metadata injection" :src="require('../assets/img/2.jpg')" class="w-100"/>
                 <figcaption class="text-center">
                   <small>
-                    <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878" rel="noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878</a>
+                    <a class="text-light" href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878" rel="noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878</a>
                   </small>
                 </figcaption>
               </figure>
@@ -80,10 +83,7 @@
             <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
               <div data-aos="zoom-out">
                 <p>
-                  For websites that do not have structured metadata embedded, it is possible to scrape the website by its HTML structure, and define a transformation to format the dataset metadata to a standard.
-                </p>
-                <p>
-                  After translation, we can also inject the structured metadata back to the page and serve it publicly so that search engines and other users can understand the page with more clues about its content.
+                  Using GEO's sitemap we can systematically visit pages of interest to scrape their HTML structure, and define a transformation to format the dataset metadata to a standard.
                 </p>
               </div>
             </div>
@@ -97,10 +97,10 @@
             </div>
             <div class="col-sm-12 col-md-7 d-flex justify-content-center align-items-center">
               <figure>
-                <expandable-image alt="metadata injection" :src="require('../assets/img/1.jpg')" class="w-100"/>
+                <expandable-image alt="metadata exmaple" :src="require('../assets/img/3.jpg')" class="w-100"/>
                 <figcaption class="text-center">
                   <small>
-                    <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878" rel="noreferrer" target="_blank">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE9878</a>
+                    <a class="text-light" href="http://metadataplus.biothings.io/geo/GSE9878" rel="noreferrer" target="_blank">http://metadataplus.biothings.io/geo/GSE9878</a>
                   </small>
                 </figcaption>
               </figure>
@@ -108,10 +108,35 @@
             <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
               <div data-aos="zoom-out">
                 <p>
-                  For websites that do not have structured metadata embedded, it is possible to scrape the website by its HTML structure, and define a transformation to format the dataset metadata to a standard.
+                  After translation, we can also inject the structured metadata back to the page and serve it publicly so that search engines and other users can understand the page with more clues about its content.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Step -->
+        <div class="jumbotron m-0 howStep">
+          <div class="container row m-auto">
+            <div class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">
+              <h1 class="text-light">4</h1>
+            </div>
+            <div class="col-sm-12 col-md-7 d-flex justify-content-center align-items-center">
+              <figure>
+                <expandable-image alt="metadata api" :src="require('../assets/img/4.jpg')" class="w-100"/>
+                <figcaption class="text-center">
+                  <small>
+                    <a class="text-light" href="http://metadataplus.biothings.io/geo/GSE9878" rel="noreferrer" target="_blank">http://metadataplus.biothings.io/geo/GSE9878</a>
+                  </small>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
+              <div data-aos="zoom-out">
+                <p>
+                  Our service makes the same source available with structured metadata dynamically embedded through our METADATA PLUS API.
                 </p>
                 <p>
-                  After translation, we can also inject the structured metadata back to the page and serve it publicly so that search engines and other users can understand the page with more clues about its content.
+                  Like this example <a href="http://metadataplus.biothings.io/geo/GSE9878" rel="noreferrer" target="_blank">here</a>.
                 </p>
               </div>
             </div>

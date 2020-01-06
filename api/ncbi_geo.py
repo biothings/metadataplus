@@ -212,11 +212,11 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
 
         # add uniform header
         html = BeautifulSoup("""
-        <nav class="navbar navbar-expand-md navbar-dark mainBackDark fixed-top p-3" style="border-bottom: 8px #4A7D8F solid;">
-            <a class="navbar-brand" href="https://discovery.biothings.io">
-                <img src="https://discovery.biothings.io/static/img/dde-logo-o.svg" width="30" height="30" alt="logo">
+        <nav class="navbar navbar-expand-md navbar-dark bg-main fixed-top p-3" style="border-bottom: 8px #ff616d solid;">
+            <a class="navbar-brand" href="http://metadataplus.biothings.io/">
+                <img src="http://metadataplus.biothings.io/img/logosimple.54090637.svg" width="30" height="30" alt="logo">
             </a>
-            <a id="logo" class="navbar-brand mainFont caps text-light" href="https://discovery.biothings.io">DATA DISCOVERY ENGINE</a>
+            <a id="logo" style="font-family: Lilita One,sans-serif;font-size: 1.5em;" class="navbar-brand mainFont font-weight-bold caps text-light" href="http://metadataplus.biothings.io/">METADATA<span class="text-sec">PLUS</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -237,12 +237,38 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         """, 'html.parser'))
         soup.head.insert(2, BeautifulSoup("""
-            <link rel="stylesheet" href="https://discovery.biothings.io/static/css/styles.css">
+            <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
         """, 'html.parser'))
         soup.head.insert(2, BeautifulSoup("""
             <style>
                 body {
-                    padding-top: 100px !important;
+                    padding-top: 120px !important;
+                }
+                .text-main {
+                	color: #7a7adc!important
+                }
+
+                .text-sec {
+                	color: #ff616d!important
+                }
+                .mainFont {
+                	font-family: Lilita One, sans-serif
+                }
+
+                .bg-main {
+                	background: #333362
+                }
+
+                .bg-main-color {
+                	background: #7a7adc
+                }
+
+                .bg-sec {
+                	background: #ff616d
+                }
+                .ui-helper-reset {
+                    opacity: 0 !important;
+                    pointer-events: none !important;
                 }
             </style>
         """, 'html.parser'))

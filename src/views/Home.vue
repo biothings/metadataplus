@@ -87,7 +87,7 @@
             <div class="d-flex justify-content-center">
               <div class="bg-main w-50 p-2 rounded">
                 <img src="../assets/img/geo_main.gif" alt="GEO" width="100px" class="bg-light m-1"/>
-                <a class="btn btn-outline-light" rel="noreferrer" href="https://discovery.biothings.io:8088/_random.html?redirect" target="_blank">
+                <a class="btn btn-outline-light" rel="noreferrer" href="/geo/_random.html" target="_blank">
                   <i class="fas fa-clone left"></i> See An Example
                 </a>
               </div>

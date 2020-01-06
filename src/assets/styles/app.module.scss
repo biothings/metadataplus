@@ -3,8 +3,10 @@ $mainColor:#7A7ADC;
 $triColor: #444584;
 
 html,body{
-  background: darken( $triColor, 10% );
   scroll-behavior: smooth;
+}
+.body-back{
+  background: darken( $triColor, 10% );
 }
 .text-main{
   color: $mainColor !important;
