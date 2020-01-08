@@ -2,7 +2,7 @@
   <div class="jumbotron bg-main hero m-0 mt-5" style="background-image: url('~@/assets/img/back.svg');">
     <div class="container p-2">
       <p class="text-right">
-        <a class="text-sec font-weight-bold" target="_blank" rel="noreferrer" href="https://github.com/biothings/metadataplus/issues">Suggest New Source</a>
+        <a class="font-weight-bold btn btn-outline-danger" target="_blank" rel="noreferrer" href="https://github.com/biothings/metadataplus/issues">+ Suggest New Source</a>
       </p>
     </div>
     <div class="container text-light bg-about">
@@ -17,13 +17,16 @@
 
       <div ref="box" class="box"></div>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Embedding structured metadata in web pages provide explicit clues about the meaning of the content for both machine and users. This practice has been increasingly embraced to facilitate the discovery of information and is critical to facilitating reproducibility of research results and enabling scientists to build on others’ work.
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Traditionally, we rely on general purpose search engine and domain knowledge to identify the entity of interest for scientific research because websites structure their information differently, with different html structure and interaction patterns, and it is hard for machines to understand and time consuming for humans to navigate the available resources online.
       </p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        However, with structured metadata that follows a predefined schema to organize information, machines can easily understand the content of webpages, and greatly increase data discoverability.
+      </p>
+      <p>
+        Furthermore, providing structured metadata allows us to harvest all the datasets of our interests for analysis. When websites already have structured metadata embedded, extracting all the metadata can be done by crawling, which is systematically browsing the websites to index information of interest.
       </p>
     </div>
     <div class="container text-light" data-aos="fade-in">
@@ -35,6 +38,9 @@
         <!-- Step -->
         <div class="jumbotron m-0 howStep">
           <div class="container row m-auto">
+            <div class="col-sm-12 d-flex justify-content-center">
+              <h3 class="h1-responsive text-light bg-sec rounded m-3 text-center p-1">Data Source</h3>
+            </div>
             <div class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">
               <h1 class="text-light">1</h1>
             </div>
@@ -51,7 +57,7 @@
             <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
               <div data-aos="zoom-out">
                 <p>
-                  Let's use NCBI <a href="https://www.ncbi.nlm.nih.gov/geo/" rel="noreferrer" target="_blank">GEO</a> as an example.
+                  Let's use NCBI <a class="text-sec" href="https://www.ncbi.nlm.nih.gov/geo/" rel="noreferrer" target="_blank">GEO</a> as an example.
                 </p>
                 <p>
                   GEO is a genomics data repository that makes dataset information available via web pages humans can easily read and understand.
@@ -67,6 +73,9 @@
         <!-- Step -->
         <div class="jumbotron m-0 howStep">
           <div class="container row m-auto">
+            <div class="col-sm-12 d-flex justify-content-center">
+              <h3 class="h1-responsive text-light bg-sec rounded m-3 text-center p-1">Translation</h3>
+            </div>
             <div class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">
               <h1 class="text-light">2</h1>
             </div>
@@ -92,6 +101,9 @@
         <!-- Step -->
         <div class="jumbotron m-0 howStep">
           <div class="container row m-auto">
+            <div class="col-sm-12 d-flex justify-content-center">
+              <h3 class="h1-responsive text-light bg-sec rounded m-3 text-center p-1">Structured Metadata</h3>
+            </div>
             <div class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">
               <h1 class="text-light">3</h1>
             </div>
@@ -117,6 +129,9 @@
         <!-- Step -->
         <div class="jumbotron m-0 howStep">
           <div class="container row m-auto">
+            <div class="col-sm-12 d-flex justify-content-center">
+              <h3 class="h1-responsive text-light bg-sec rounded m-3 text-center p-1">Ta-dah!</h3>
+            </div>
             <div class="col-sm-12 col-md-1 d-flex justify-content-center align-items-center">
               <h1 class="text-light">4</h1>
             </div>
@@ -136,7 +151,7 @@
                   Our service makes the same source available with structured metadata dynamically embedded through our METADATA PLUS API.
                 </p>
                 <p>
-                  Like this example <a href="http://metadataplus.biothings.io/geo/GSE9878" rel="noreferrer" target="_blank">here</a>.
+                  Like this example <a class="text-sec" href="http://metadataplus.biothings.io/geo/GSE9878" rel="noreferrer" target="_blank">here</a>.
                 </p>
               </div>
             </div>

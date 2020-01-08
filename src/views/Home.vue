@@ -4,13 +4,19 @@
       <div>
         <img alt="metadataplus" src="../assets/img/logofull.svg" class="w-100"/>
         <br />
-        <h3 class="text-light font-weight-light">Schema.org-Standard Structured Metadata Injector</h3>
+        <h3 class="text-light font-weight-light"><a class="text-light" href="https://schema.org/" target="_blank" rel="noreferrer">Schema.org</a>-Standard Structured Metadata Injector</h3>
+        <p class="mt-4 justify-content-center d-flex">
+          <router-link class="btn btn-outline-light btn-main m-3" to="/about">Learn How It Works</router-link>
+          <a class="btn btn-outline-light m-3 btn-sec" rel="noreferrer" href="/geo/_random.html" target="_blank">
+            <i class="fas fa-clone left"></i> See An Example
+          </a>
+        </p>
       </div>
     </div>
-    <div class="bg-sec jumbotron m-0">
+    <div class="bg-main-color jumbotron m-0">
       <div class="container row m-auto">
         <div class="col-sm-12 col-md-8  d-flex justify-content-center align-items-center">
-          <div data-aos="zoom-out">
+          <div>
             <p>
               Some data sources publish valuable dataset information on a format only readable by humans. If machines can't systematically find and understand this information, valuable contributions could be missed by related research efforts.
             </p>
@@ -27,7 +33,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-main-color jumbotron m-0">
+    <div class="bg-sec jumbotron m-0">
       <div class="container row m-auto">
         <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
           <div class="text-center">
@@ -36,7 +42,7 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center">
-          <div data-aos="zoom-out">
+          <div>
             <p>
               Currently, there are many standards and schemas for marking up different types of information on web pages. As a result, it is difficult for webmasters to decide on the most relevant and supported markup standards to use.
             </p>
@@ -50,10 +56,10 @@
         </div>
       </div>
     </div>
-    <div class="bg-sec jumbotron m-0">
+    <div class="bg-main-color jumbotron m-0">
       <div class="container row m-auto">
         <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center">
-          <div data-aos="zoom-out">
+          <div>
             <p>
               Following a standard and reusable data model for structured metadata can impact the discovery of your dataset and will help our efforts to make data <a class="text-light" href="https://www.go-fair.org/fair-principles/" rel="noreferrer" target="_blank">FAIR</a> (Findable, Accessible, Interoperable and Reusable).
             </p>
@@ -63,7 +69,10 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
-          <h1 class="text-light">MOTIVATION</h1>
+          <div class="text-center">
+            <img src="../assets/img/motivation.svg" alt="motivation" class="w-75 d-block m-auto"/>
+            <h1 class="text-light">MOTIVATION</h1>
+          </div>
         </div>
       </div>
     </div>
@@ -81,7 +90,7 @@
             <p>
               The result is metadata that can be harvested by data portals and understood by search engines.
             </p>
-            <h3><router-link class="nav-link" to="/about#how-it-works">Learn About How It Works</router-link></h3>
+            <h3><router-link class="nav-link" to="/about">Learn About How It Works</router-link></h3>
             <h4>or</h4>
             <h3 class="card-title h1-responsive pt-3 mb-5 text-sec"><strong>See It In Action:</strong></h3>
             <div class="d-flex justify-content-center">

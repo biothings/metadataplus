@@ -42,4 +42,19 @@ export default {
   background-position: left;
   background-size: cover;
  }
+ .btn-main{
+   background-image: url("~@/assets/img/btnmain.svg");
+   background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+  // background-color: #7A7ADC;
+ }
+ .btn-sec{
+   background-image: url("~@/assets/img/btnsec.svg");
+   background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+  // background-color: #FF616D;
+ }
+
 </style>

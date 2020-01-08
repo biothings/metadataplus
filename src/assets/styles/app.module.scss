@@ -22,7 +22,7 @@ html,body{
 
 @for $i from 1 through 7 {
   .howStep:nth-child(#{$i}) {
-      background-color: darken($secColor, ($i - 1) * 3%);
+      background-color: darken($mainColor, ($i - 1) * 3%);
   }
 }
 

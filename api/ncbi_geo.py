@@ -191,7 +191,7 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
             to the original GEO data series page <a href="{}">{}</a>
             <a id="consoleLink" class="btn btn-sm btn-primary text-light ml-2" href="" target="_blank" rel="nonreferrer">Take a look</a>
             <script type="text/javascript">
-            document.getElementById( "consoleLink" ).href = 'https://search.google.com/structured-data/testing-tool/u/0/#url=' + encodeURI(window.location.href);
+            document.getElementById( "consoleLink" ).href = 'https://search.google.com/test/rich-results?url=' + encodeURI(window.location.href);
             </script>
             """.format(url, gse_id)
             # add structured metadata
