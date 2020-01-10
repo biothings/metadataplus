@@ -1,9 +1,10 @@
+''' Biothings API Web Config '''
+
 import os
 
 from biothings.web.api.es.handlers import QueryHandler
 from biothings.web.settings.default import *
 
-# from api.ncbi_geo import APP_LIST as GEO_APP
 from api.query_builder import MPQueryBuilder
 from api.query_transformer import MPResultTransformer
 
@@ -18,7 +19,6 @@ ES_INDEX_GEO = os.getenv('ES_INDEX_GEO', 'indexed_ncbi_geo')  # get endpoint
 # *****************************************************************************
 # Tornado URL Patterns
 # *****************************************************************************
-# UNINITIALIZED_APP_LIST = GEO_APP TODO
 APP_LIST = [
     (r"/api/query/?", QueryHandler),
 ]
