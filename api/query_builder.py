@@ -2,4 +2,13 @@ from biothings.web.api.es.query_builder import ESQueryBuilder
 
 
 class MPQueryBuilder(ESQueryBuilder):
-    pass
+
+    def _extra_query_types(self, q):
+        return {
+            "query": {
+                "query_string": {
+                    "query": q,
+                    "fields": ["name^6", "description^3", "*"],
+                }
+            }
+        }
