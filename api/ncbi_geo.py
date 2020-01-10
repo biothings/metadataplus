@@ -135,7 +135,7 @@ class NCBIRandomDatasetExplorer(tornado.web.RequestHandler):
 
         query_body = {"query": {"function_score": {"functions": [{"random_score": {}}]}}}
         query_result = client.search(
-            index=api.config.ES_INDEX,
+            index=api.config.ES_INDEX_GEO,
             body=query_body,
             size=1,
             _source=["_id"])
@@ -166,7 +166,7 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
 
         # try to retrieve pre-loaded structured metadata
         try:
-            doc = client.get(id=gse_id, index=api.config.ES_INDEX)
+            doc = client.get(id=gse_id, index=api.config.ES_INDEX_GEO)
         except elasticsearch.ElasticsearchException:
             doc = None
         else:
@@ -183,6 +183,7 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
             # except Exception:
             #     logging.warning('[%s] Cannot parse raw metadata.', gse_id)
             self.send_error()
+            return
 
         if doc:
             # set header message

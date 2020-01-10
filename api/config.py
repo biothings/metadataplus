@@ -9,6 +9,8 @@ from biothings.web.api.es.handlers import QueryHandler
 ES_INDEX = os.getenv('ES_INDEX', 'indexed_ncbi_geo')
 ES_DOC_TYPE = '_doc'
 ES_HOST = os.getenv("ES_HOST", 'localhost:9200')
+ES_INDEX = os.getenv('ES_INDEX', '_all')  # query endpoint
+ES_INDEX_GEO = os.getenv('ES_INDEX_GEO', 'indexed_ncbi_geo')  # get endpoint
 
 # *****************************************************************************
 # Tornado URL Patterns
