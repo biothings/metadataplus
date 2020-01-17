@@ -199,11 +199,6 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
             new_tag = soup.new_tag('script', type="application/ld+json")
             new_tag.string = json.dumps(doc, indent=4, ensure_ascii=False)
             soup.head.insert(1, new_tag)
-            # # add js required by "Take a look" button
-            # new_tag = soup.new_tag('script', type="text/javascript")
-            # new_tag.string = """
-            # document.getElementById( "consolelink" ).href = 'https://search.google.com/structured-data/testing-tool/u/0/#url=' + encodeURI(window.location.href); """
-            # soup.head.insert(1, new_tag)
         else:
             # set header message
             message = """
@@ -214,10 +209,10 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
         # add uniform header
         html = BeautifulSoup("""
         <nav class="navbar navbar-expand-md navbar-dark bg-main fixed-top p-3" style="border-bottom: 8px #ff616d solid;">
-            <a class="navbar-brand" href="http://metadataplus.biothings.io/">
-                <img src="http://metadataplus.biothings.io/img/logosimple.54090637.svg" width="30" height="30" alt="logo">
+            <a class="navbar-brand" href="https://metadataplus.biothings.io/">
+                <img src="https://metadataplus.biothings.io/img/logosimple.54090637.svg" width="30" height="30" alt="logo">
             </a>
-            <a id="logo" style="font-family: Lilita One,sans-serif;font-size: 1.5em;" class="navbar-brand mainFont font-weight-bold caps text-light" href="http://metadataplus.biothings.io/">METADATA<span class="text-sec">PLUS</span></a>
+            <a id="logo" style="font-family: Lilita One,sans-serif;font-size: 1.5em;" class="navbar-brand mainFont font-weight-bold caps text-light" href="https://metadataplus.biothings.io/">METADATA<span class="text-sec">PLUS</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
