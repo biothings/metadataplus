@@ -138,9 +138,10 @@ class NCBIRandomDatasetExplorer(tornado.web.RequestHandler):
             index=api.config.ES_INDEX_GEO,
             body=query_body,
             size=1,
-            _source=["_id"])
+            _source=["identifier"]
+        )
 
-        _id = query_result['hits']['hits'][0]['_id']
+        _id = query_result['hits']['hits'][0]['_source']['identifier']
 
         if self.get_argument('redirect', False) is not False:
             self.redirect('/geo/{}'.format(_id))
