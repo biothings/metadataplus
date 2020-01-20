@@ -28,6 +28,5 @@ APP_LIST = [
 # *****************************************************************************
 ES_QUERY_BUILDER = MPQueryBuilder
 ES_RESULT_TRANSFORMER = MPResultTransformer
-ACCESS_CONTROL_ALLOW_METHODS = 'HEAD,GET,POST,DELETE,PUT,OPTIONS'
 DISABLE_CACHING = True
 ALLOW_RANDOM_QUERY = True
