@@ -28,5 +28,4 @@ APP_LIST = [
 # *****************************************************************************
 ES_QUERY_BUILDER = MPQueryBuilder
 ES_RESULT_TRANSFORMER = MPResultTransformer
-DISABLE_CACHING = True
 ALLOW_RANDOM_QUERY = True
