@@ -55,10 +55,10 @@ def main():
     server = tornado.httpserver.HTTPServer(application)
     server.bind(options.port)
 
-    if platform == "win32":
-        server.start(1)
-    else:
-        server.start(0)  # forks one process per cpu
+    # if platform == "win32":
+    #     server.start(1)
+    # else:
+    #     server.start(0)  # forks one process per cpu
 
     IOLoop.current().start()
 
