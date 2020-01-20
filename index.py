@@ -27,7 +27,7 @@ options.parse_command_line()
 class PageNotFoundHandler(tornado.web.RequestHandler):
     def prepare(self):
         self.set_status(404)
-        self.render("dist/404.html", redirect_url="/geo/_random.html?redirect")
+        # self.render("dist/404.html", redirect_url="/geo/_random.html?redirect")
 
 
 WEB_LIST = [
@@ -54,11 +54,7 @@ def main():
 
     server = tornado.httpserver.HTTPServer(application)
     server.bind(options.port)
-
-    # if platform == "win32":
-    #     server.start(1)
-    # else:
-    #     server.start(0)  # forks one process per cpu
+    server.start()
 
     IOLoop.current().start()
 
