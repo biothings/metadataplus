@@ -8,7 +8,7 @@ class MPQueryBuilder(ESQueryBuilder):
             "query": {
                 "query_string": {
                     "query": q,
-                    "fields": ["name^6", "description^3", "*"],
+                    "fields": ["name^6", "description^3", "_all"],
                 }
             }
         }
