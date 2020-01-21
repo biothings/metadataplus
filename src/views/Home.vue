@@ -7,7 +7,7 @@
         <h3 class="text-light font-weight-light"><a class="text-light" href="https://schema.org/" target="_blank" rel="noreferrer">Schema.org</a>-Standard Structured Metadata Injector</h3>
         <p class="mt-4 justify-content-center d-flex">
           <router-link class="btn btn-outline-light btn-main m-3" to="/about">Learn How It Works</router-link>
-          <a class="btn btn-outline-light m-3 btn-sec" rel="noreferrer" href="/geo/_random.html" target="_blank">
+          <a class="btn btn-outline-light m-3 btn-sec" rel="noreferrer" href="http://metadataplus.biothings.io/geo/GSE9878" target="_blank">
             <i class="fas fa-clone left"></i> See An Example
           </a>
         </p>

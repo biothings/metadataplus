@@ -2,7 +2,7 @@
   <div class="jumbotron bg-main hero m-0 mt-5" style="background-image: url('~@/assets/img/back.svg');">
     <div class="container p-2">
       <p class="text-right">
-        <a class="font-weight-bold btn btn-outline-danger" target="_blank" rel="noreferrer" href="https://github.com/biothings/metadataplus/issues">+ Suggest New Source</a>
+        <a class="font-weight-bold btn btn-outline-danger" target="_blank" rel="noreferrer" href="https://github.com/biothings/metadataplus/issues/new/choose">+ Suggest New Source</a>
       </p>
     </div>
     <div class="container text-light bg-about">

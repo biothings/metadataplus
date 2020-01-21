@@ -222,6 +222,7 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
             This page adds structured schema.org <a href="http://schema.org/Dataset">Dataset</a> metadata
             to the original GEO data series page <a href="{}">{}</a>
             <a id="consoleLink" class="btn btn-sm btn-primary text-light ml-2" href="" target="_blank" rel="nonreferrer">Take a look</a>
+            <a href="https://metadataplus.biothings.io/about" target="_blank">Learn more</a>
             <script type="text/javascript">
             document.getElementById( "consoleLink" ).href = 'https://search.google.com/test/rich-results?url=' + encodeURI(window.location.href);
             </script>
