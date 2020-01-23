@@ -4,7 +4,8 @@ DATASOURCES = (
     'harvard_dataverse',
     'ncbi_geo',
     'omicsdi',
-    'zenodo')
+    'zenodo',
+    'nyu')
 
 
 class MPResultTransformer(ESResultTransformer):
