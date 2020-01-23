@@ -6,9 +6,20 @@ class MPQueryBuilder(ESQueryBuilder):
     def _extra_query_types(self, q):
         return {
             "query": {
-                "query_string": {
-                    "query": q,
-                    "fields": ["name^6", "description^3", "_all"],
+                "dis_max": {
+                    "queries": [
+                        {
+                            "query_string": {
+                                "query": q,
+                                "fields": ["name^6", "description^3"]
+                            }
+                        },
+                        {
+                            "query_string": {
+                                "query": q
+                            }
+                        }
+                    ]
                 }
             }
         }
