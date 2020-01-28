@@ -4,8 +4,10 @@
     Elasticsearch 7 is requied as the database server.
 
     Add the following to the hosts file for testing:
-    127.0.0.1 immport.localhost
-    127.0.0.1 geo.localhost
+        127.0.0.1 immport.localhost
+        127.0.0.1 geo.localhost
+
+    Run with --host=localhost
 
 '''
 
