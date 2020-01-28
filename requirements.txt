@@ -1,4 +1,5 @@
-git+git://github.com/biothings/biothings.api.git@es7#egg=biothings
+tornado
 scrapy
 beautifulsoup4
 extruct
+selenium

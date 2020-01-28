@@ -3,134 +3,18 @@
 import json
 import logging
 import os
+
+import elasticsearch
 import tornado.httpclient
 import tornado.ioloop
 import tornado.options
 import tornado.routing
 import tornado.web
 from bs4 import BeautifulSoup
-from scrapy.selector import Selector
 from tornado.options import options
-import api.config
-import elasticsearch
-
-client = elasticsearch.Elasticsearch(api.config.ES_HOST)
 
 
-class NCBIGeoSpider:
-
-    name = 'ncbi_geo'
-
-    def parse(self, response):
-
-        table = response.xpath(
-            '/html/body/table/tr/td/table[6]/tr[3]/td[2]'
-            '/table/tr/td/table/tr/td/table[2]/tr/td'
-            '/table[1]/tr')
-        data = {}
-
-        for node in table:
-            # extract series id
-            if node.attrib.get('bgcolor') == '#cccccc':
-                data['_id'] = node.xpath('.//strong').attrib.get('id')
-            # remove place holder lines
-            elif len(node.xpath('./td')) == 2:
-                if node.xpath('string(./td[1])').get().strip():
-                    # extract multi item entry
-                    if node.xpath('./td[2]').attrib.get('onmouseout'):
-                        key = node.xpath('./td[1]/text()').get().split()[0]
-                        data[key] = node.xpath('./td[2]//a/text()').getall()
-                    # extract single item entry
-                    else:
-                        key = node.xpath('./td[1]/text()').get()
-                        data[key] = node.xpath('string(./td[2])').get().strip().replace('\xa0', ' ')
-
-        return data if data else None
-
-
-async def transform(doc, url, identifier):
-
-    mappings = {
-        "Title": "name",
-        "Organism": "organism",
-        "Experiment type": "measurementTechnique",
-        "Summary": "description",
-        "Contributor(s)": lambda value: {
-            "creator": [{
-                "@type": "Person",
-                "name": individual
-            } for individual in value.split(', ')]
-        },
-        "Submission date": "datePublished",
-        "Last update date": "dateModified",
-        "Organization": lambda value: {
-            "publisher": {
-                "@type": "Organization",
-                "name": value
-            }
-        },
-    }
-    _doc = {
-        "@context": "http://schema.org/",
-        "@type": "Dataset",
-        "identifier": identifier,
-        "distribution": {
-            "@type": "dataDownload",
-            "contentUrl": url
-        },
-        "includedInDataCatalog": {
-            "@type": "DataCatalog",
-            "name": "NCBI GEO",
-            "url": "https://www.ncbi.nlm.nih.gov/geo/"
-        }
-    }
-    pmids = doc.get("Citation(s)")
-    if pmids:
-        _doc['citation'] = []
-        for pmid in pmids.split(', '):
-
-            # funders
-            http_client = tornado.httpclient.AsyncHTTPClient()
-            url = "https://www.ncbi.nlm.nih.gov/pubmed/" + pmid
-            response = await http_client.fetch(url)
-            title_xpath = '//*[@id="maincontent"]/div/div[5]/div/div[6]/div[1]/div/h4[4]/text()'
-            # grant support section exists
-            if Selector(text=response.body.decode()).xpath(title_xpath).get() == 'Grant support':
-                xpath = '//*[@id="maincontent"]/div/div[5]/div/div[6]/div[1]/div/ul[4]/li/a/text()'
-                supporters = Selector(text=response.body.decode()).xpath(xpath).getall()
-                if supporters:
-                    identifiers, funders = [], []
-                    for supporter in supporters:
-                        terms = supporter.split('/')[:-1]
-                        identifiers.append(terms[0])
-                        funders.append('/'.join(terms[1:]))
-                    _doc['funding'] = [
-                        {
-                            'funder': {
-                                '@type': 'Organization',
-                                'name': funder
-                            },
-                            'identifier': identifier.strip(),
-                        } for funder, identifier in zip(funders, identifiers)
-                    ]
-
-            # citation
-            http_client = tornado.httpclient.AsyncHTTPClient()
-            citation_url = 'https://www.ncbi.nlm.nih.gov/sites/PubmedCitation?id=' + pmid
-            citation_response = await http_client.fetch(citation_url)
-            citation_text = Selector(text=citation_response.body.decode()).xpath('string(/)').get()
-            _doc['citation'].append(citation_text.replace(u'\xa0', u' '))
-
-    for key, value in doc.items():
-        if key in mappings:
-            if isinstance(mappings[key], str):
-                _doc[mappings[key]] = value
-            elif callable(mappings[key]):
-                _doc.update(mappings[key](value))
-            else:
-                raise RuntimeError()
-
-    return dict(sorted(_doc.items()))
+ES_INDEX_GEO = os.getenv('ES_INDEX_GEO', 'indexed_geo')
 
 
 class NCBIProxyHandler(tornado.web.RequestHandler):
@@ -165,10 +49,9 @@ class NCBIRandomDatasetExplorer(tornado.web.RequestHandler):
 
         query_body = {"query": {"function_score": {"functions": [{"random_score": {}}]}}}
         query_result = client.search(
-            index=api.config.ES_INDEX_GEO,
+            index=ES_INDEX_GEO,
             body=query_body,
-            size=1,
-            _source=["identifier"]
+            size=1, _source=["identifier"]
         )
 
         _id = query_result['hits']['hits'][0]['_source']['identifier']
@@ -193,28 +76,16 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
 
         # add resource path redirection
         soup.head.insert(0, soup.new_tag(
-            'base', href='//{}/geo/query/'.format(options.geo_host)))
+            'base', href='//{}/geo/query/'.format('geo.' + self.request.host)))
 
         # try to retrieve pre-loaded structured metadata
+        client = elasticsearch.Elasticsearch()
         try:
-            doc = client.get(id=url, index=api.config.ES_INDEX_GEO)
+            doc = client.get(id=url, index=ES_INDEX_GEO)
         except elasticsearch.ElasticsearchException:
             doc = None
         else:
             doc = doc['_source']
-
-        # TODO parse raw metadata and do live transform
-        if not doc:
-            logging.warning('[%s] Cannot retrieve from es.', gse_id)
-            try:
-                # capture raw metadata
-                doc = NCBIGeoSpider().parse(Selector(text=text))
-                # transform to structured metadata
-                doc = await transform(doc, url, gse_id)
-            except Exception:
-                logging.warning('[%s] Cannot parse raw metadata.', gse_id)
-                self.set_status(404)
-            return
 
         if doc:
             # set header message
