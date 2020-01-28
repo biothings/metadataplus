@@ -50,24 +50,31 @@ class ImmPortProxyHandler(tornado.web.RequestHandler):
         self.finish(response.body)
 
 
+WAIT_CONDITION = '//*[@id="ui-accordiontab-0-content"]/div/table/tbody/tr[1]/td[2]'
+
+
+def server_side_render(url):
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    options.add_argument('window-size=1200x600')
+    driver = webdriver.Chrome(chrome_options=options)
+    driver.get(url)
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located(
+        (By.XPATH, WAIT_CONDITION)))
+
+    return driver.page_source
+
+
 class ImmPortDatasetWrapper(tornado.web.RequestHandler):
 
     async def get(self, _id):
 
         url = 'https://www.immport.org/shared/study/' + _id
 
-        options = webdriver.ChromeOptions()
-        options.add_argument('headless')
-        options.add_argument('window-size=1200x600')
-        driver = webdriver.Chrome(chrome_options=options)
-        driver.get(url)
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-            (By.XPATH, '//*[@id="ui-accordiontab-0-content"]/div/table/tbody/tr[1]/td[2]')))
-        text = driver.page_source
+        ioloop = tornado.ioloop.IOLoop.current()
+        text = await ioloop.run_in_executor(None, server_side_render, url)
 
-        # http_client = tornado.httpclient.AsyncHTTPClient()
-        # response = await http_client.fetch(url)
-        # text = response.body.decode()
         soup = BeautifulSoup(text, 'html.parser')
 
         # modify resource path redirection
