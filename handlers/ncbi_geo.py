@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 from tornado.options import options
 
 
-ES_INDEX_GEO = os.getenv('ES_INDEX_GEO', 'indexed_geo')
+ES_INDEX_GEO = os.getenv('ES_INDEX_GEO', 'indexed_ncbi_geo')
 
 
 class NCBIProxyHandler(tornado.web.RequestHandler):
@@ -108,7 +108,7 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
             message = """
             No structured metadata on this page.
             <a href="{}">Try a different URL.</a>
-            """.format('/geo/_random.html?redirect')
+            """.format(f'//{self.request.host}/geo/_random.html?redirect')
 
         # add uniform header
         html = BeautifulSoup("""
