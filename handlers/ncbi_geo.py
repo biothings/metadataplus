@@ -47,6 +47,7 @@ class NCBIRandomDatasetExplorer(tornado.web.RequestHandler):
 
     async def get(self):
 
+        client = elasticsearch.Elasticsearch()
         query_body = {"query": {"function_score": {"functions": [{"random_score": {}}]}}}
         query_result = client.search(
             index=ES_INDEX_GEO,
