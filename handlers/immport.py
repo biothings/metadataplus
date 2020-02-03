@@ -50,8 +50,8 @@ class ImmPortProxyHandler(tornado.web.RequestHandler):
         self.finish(response.body)
 
 
-WAIT_CONDITION = '//*[@id="ui-accordiontab-0-content"]/div/table/tbody/tr[1]/td[2]'
-
+PRIMARY_LOADING_INDICATOR = '/html/body/app-root/div[contains(@class, \'app-loading\')]'
+SECONDARY_LOADING_INDICATOR = '/html/body/div/ngx-spinner/div'
 
 def server_side_render(url):
 
@@ -60,9 +60,10 @@ def server_side_render(url):
     options.add_argument('window-size=1200x600')
     driver = webdriver.Chrome(chrome_options=options)
     driver.get(url)
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located(
-        (By.XPATH, WAIT_CONDITION)))
-
+    WebDriverWait(driver, 30).until(EC.invisibility_of_element(
+        (By.XPATH, PRIMARY_LOADING_INDICATOR)))
+    WebDriverWait(driver, 30).until(EC.invisibility_of_element(
+        (By.XPATH, SECONDARY_LOADING_INDICATOR)))   
     return driver.page_source
 
 
