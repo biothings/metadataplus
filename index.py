@@ -17,7 +17,7 @@ from tornado.ioloop import IOLoop
 from tornado.options import define, options
 from tornado.routing import HostMatches
 
-from handlers import ncbi_geo, immport
+from handlers import ncbi_geo, immport, iframe
 
 define("host", default="metadataplus.biothings.io", help="server hostname")
 define("port", default="8000", help="local port to run the server")
@@ -41,6 +41,7 @@ def main():
         (r"/geo/_random.html", ncbi_geo.NCBIRandomDatasetExplorer),
         (r"/geo/(sitemap\d?.xml)", tornado.web.StaticFileHandler, dict(path="static")),
         (r"/immport/(SDY\d+)", immport.ImmPortDatasetWrapper),
+        # (r"/immport/(SDY\d+)", iframe.PlusWrapper),
     ],
         xheaders=True,
         static_path='static',
