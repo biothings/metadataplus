@@ -1,7 +1,6 @@
-''' Add structured schema.org Dataset metadata to NCBI GEO data series page. '''
+''' Add structured schema.org Dataset metadata to ImmPort '''
 
 import json
-import logging
 import os
 
 import elasticsearch
@@ -10,8 +9,6 @@ import tornado.ioloop
 import tornado.options
 import tornado.routing
 import tornado.web
-from bs4 import BeautifulSoup
-from tornado.options import options
 
 
 ES_INDEX_IMMPORT = os.getenv('ES_INDEX_IMMPORT', 'indexed_immport')
@@ -44,7 +41,7 @@ class PlusWrapper(tornado.web.RequestHandler):
             </script>
             """.format(url, _id)
             # add structured metadata
-            metadata ="""
+            metadata = """
             <script type="application/ld+json">
             {}
             </script>
@@ -132,6 +129,6 @@ class PlusWrapper(tornado.web.RequestHandler):
             </noscript>
           </body>
         </html>
-        """.format(metadata,message,url)
+        """.format(metadata, message, url)
 
         self.finish(page)
