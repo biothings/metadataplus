@@ -27,7 +27,7 @@ options.parse_command_line()
 class PageNotFoundHandler(tornado.web.RequestHandler):
     def prepare(self):
         self.set_status(404)
-        # self.render("dist/404.html", redirect_url="/geo/_random.html?redirect")
+        self.finish()
 
 
 def main():
@@ -43,12 +43,11 @@ def main():
         # (r"/immport/(SDY\d+)", immport.ImmPortDatasetWrapper),
         (r"/immport/(SDY\d+)", immport_iframe.PlusWrapper),
     ],
-        xheaders=True,
         static_path='static',
         default_handler_class=PageNotFoundHandler
     )
 
-    server = tornado.httpserver.HTTPServer(application)
+    server = tornado.httpserver.HTTPServer(application, xheaders=True)
     server.bind(options.port)
     server.start()
 
