@@ -2,4 +2,3 @@ tornado
 scrapy
 beautifulsoup4
 extruct
-selenium

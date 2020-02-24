@@ -7,12 +7,9 @@ import os
 import elasticsearch
 import tornado.httpclient
 import tornado.ioloop
-import tornado.options
 import tornado.routing
 import tornado.web
 from bs4 import BeautifulSoup
-from tornado.options import options
-
 
 ES_INDEX_GEO = os.getenv('ES_INDEX_GEO', 'indexed_ncbi_geo')
 
@@ -23,7 +20,9 @@ class NCBIProxyHandler(tornado.web.RequestHandler):
     '''
 
     def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "*")
+        assert self.request.host.startswith('geo.')
+        origin = self.request.protocol + '://' + self.request.host[4:]
+        self.set_header("Access-Control-Allow-Origin", origin)
         self.set_header("Access-Control-Allow-Headers", "*")
         self.set_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
 

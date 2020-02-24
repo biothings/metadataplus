@@ -1,7 +1,6 @@
-''' Add structured schema.org Dataset metadata to ImmPort page. '''
+''' Add structured schema.org Dataset metadata to ImmPort '''
 
 import json
-import logging
 import os
 
 import elasticsearch
@@ -10,76 +9,16 @@ import tornado.ioloop
 import tornado.options
 import tornado.routing
 import tornado.web
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from tornado.options import options
+
 
 ES_INDEX_IMMPORT = os.getenv('ES_INDEX_IMMPORT', 'indexed_immport')
 
 
-class ImmPortProxyHandler(tornado.web.RequestHandler):
-    '''
-        Serves resources for the proxied site.
-    '''
-
-    def set_default_headers(self):
-        self.set_header("Access-Control-Allow-Origin", "*")
-        self.set_header("Access-Control-Allow-Headers", "*")
-        self.set_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
-
-    def options(self):
-        self.set_status(204)
-        self.finish()
-
-    async def get(self):
-
-        if self.request.uri.endswith('js'):
-            self.set_status(404)
-            return
-
-        root = 'https://www.immport.org'
-        url = root + self.request.uri
-        http_client = tornado.httpclient.AsyncHTTPClient()
-        response = await http_client.fetch(url, raise_error=False)
-
-        self.set_status(response.code)
-        self.set_header('Content-Type', response.headers.get('Content-Type'))
-        self.finish(response.body)
-
-
-PRIMARY_LOADING_INDICATOR = '/html/body/app-root/div[contains(@class, \'app-loading\')]'
-SECONDARY_LOADING_INDICATOR = '/html/body/div/ngx-spinner/div'
-
-def server_side_render(url):
-
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
-    options.add_argument('window-size=1200x600')
-    driver = webdriver.Chrome(chrome_options=options)
-    driver.get(url)
-    WebDriverWait(driver, 30).until(EC.invisibility_of_element(
-        (By.XPATH, PRIMARY_LOADING_INDICATOR)))
-    WebDriverWait(driver, 30).until(EC.invisibility_of_element(
-        (By.XPATH, SECONDARY_LOADING_INDICATOR)))   
-    return driver.page_source
-
-
-class ImmPortDatasetWrapper(tornado.web.RequestHandler):
+class PlusWrapper(tornado.web.RequestHandler):
 
     async def get(self, _id):
 
         url = 'https://www.immport.org/shared/study/' + _id
-
-        ioloop = tornado.ioloop.IOLoop.current()
-        text = await ioloop.run_in_executor(None, server_side_render, url)
-
-        soup = BeautifulSoup(text, 'html.parser')
-
-        # modify resource path redirection
-        soup.base['href'] = '//{}/shared/'.format('immport.' + self.request.host)
 
         # try to retrieve pre-loaded structured metadata
         client = elasticsearch.Elasticsearch()
@@ -91,9 +30,105 @@ class ImmPortDatasetWrapper(tornado.web.RequestHandler):
             doc = doc['_source']
 
         if doc:
+            # set header message
+            message = """
+            This page adds structured schema.org <a href="http://schema.org/Dataset">Dataset</a> metadata
+            to the original source series page <a href="{}">{}</a>
+            <a id="consoleLink" class="btn btn-sm btn-primary text-light ml-2" href="" target="_blank" rel="nonreferrer">Take a look</a>
+            <a href="https://metadataplus.biothings.io/about" target="_blank">Learn more</a>
+            <script type="text/javascript">
+            document.getElementById( "consoleLink" ).href = 'https://search.google.com/test/rich-results?url=' + encodeURI(window.location.href);
+            </script>
+            """.format(url, _id)
             # add structured metadata
-            new_tag = soup.new_tag('script', type="application/ld+json")
-            new_tag.string = json.dumps(doc, indent=4, ensure_ascii=False)
-            soup.head.insert(1, new_tag)
+            metadata = """
+            <script type="application/ld+json">
+            {}
+            </script>
+            """.format(json.dumps(doc, indent=4, ensure_ascii=False))
+        else:
+            # set header message
+            message = """
+            No structured metadata on this page.
+            <a href="{}">Try a different URL.</a>
+            """.format(f'//{self.request.host}/geo/_random.html?redirect')
 
-        self.finish(soup.prettify())
+            # add structured metadata
+            metadata = ''
+
+        # MARCO
+        page = """
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width,initial-scale=1.0">
+            <meta name="HandheldFriendly" content="True">
+            <meta property="og:locale" content="en_US">
+            {}
+            <link href="https://fonts.googleapis.com/css?family=Lilita+One&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+            <style>
+                .text-main {{
+                	color: #7a7adc!important
+                }}
+
+                .text-sec {{
+                	color: #ff616d!important
+                }}
+
+                .mainFont {{
+                	font-family: Lilita One, sans-serif
+                }}
+
+                .bg-main {{
+                	background: #333362
+                }}
+
+                .bg-main-color {{
+                	background: #7a7adc
+                }}
+
+                .bg-sec {{
+                	background: #ff616d
+                }}
+
+                .ui-helper-reset {{
+                	opacity: 0!important;
+                	pointer-events: none!important
+                }}
+                .if{{
+                    height:100vh;
+                }}
+            </style>
+          </head>
+          <body class="body-back row m-0">
+              <nav class="navbar navbar-expand-md navbar-dark bg-main p-3 col-sm-12" style="border-bottom: 8px #ff616d solid;">
+                  <a class="navbar-brand" href="https://metadataplus.biothings.io/">
+                      <img src="https://metadataplus.biothings.io/img/logosimple.54090637.svg" width="30" height="30" alt="logo">
+                  </a>
+                  <a id="logo" style="font-family: Lilita One,sans-serif;font-size: 1.5em;" class="navbar-brand mainFont font-weight-bold caps text-light" href="https://metadataplus.biothings.io/">METADATA<span class="text-sec">PLUS</span></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                      <small class="text-muted m-auto font-weight-bold alert alert-light">
+                      {}
+                      </small>
+                      <ul class="navbar-nav">
+                      <li class="nav-item"><a class="nav-link h-link" href="https://discovery.biothings.io/best-practices">Discovery Guide</a></li>
+                      <li class="nav-item"><a class="nav-link h-link" href="https://discovery.biothings.io/schema-playground">Schema Playground</a></li>
+                      </ul>
+                  </div>
+              </nav>
+              <iframe src="{}" class="col-sm-12 if p-0">
+            <noscript>
+              <strong>We're sorry but METADATA PLUS site doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+            </noscript>
+          </body>
+        </html>
+        """.format(metadata, message, url)
+
+        self.finish(page)
