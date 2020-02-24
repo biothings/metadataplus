@@ -29,15 +29,19 @@ class PageNotFoundHandler(tornado.web.RequestHandler):
 def main():
 
     application = tornado.web.Application([
-        (HostMatches(r'geo\..+'), ncbi_geo.NCBIProxyHandler),
+        (HostMatches(r'geo\..+'), [
+            (r"/(robots.txt)", tornado.web.StaticFileHandler, {"path": "static/geo"}),
+            (r"/.*", ncbi_geo.NCBIProxyHandler)
+        ]),
+        (r"/static/(.+)", tornado.web.StaticFileHandler, dict(path="static")),
         (r"/sitemap.xml", tornado.web.RedirectHandler, {"url": "/static/sitemap.xml"}),
+        (r"/(favicon\.ico)", tornado.web.StaticFileHandler, dict(path="dist")),
         (r"/(|(?:css|js|img)/.*)", tornado.web.StaticFileHandler,
          dict(path="dist", default_filename="index.html")),
         (r"/geo/(GSE\d+)", ncbi_geo.NCBIGeoDatasetWrapper),
         (r"/geo/_random.html", ncbi_geo.NCBIRandomDatasetExplorer),
         (r"/immport/(SDY\d+)", immport.PlusWrapper),
     ],
-        static_path='static',
         default_handler_class=PageNotFoundHandler
     )
 
