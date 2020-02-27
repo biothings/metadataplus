@@ -2,7 +2,7 @@
   <div class="jumbotron bg-main hero m-0 mt-5" style="background-image: url('~@/assets/img/back.svg');">
     <div class="container p-2">
       <p class="text-right">
-        <a class="font-weight-bold btn btn-outline-danger" target="_blank" rel="noreferrer" href="https://github.com/biothings/metadataplus/issues/new/choose">+ Suggest New Source</a>
+        <a class="font-weight-bold btn btn-outline-info" target="_blank" rel="noreferrer" href="https://github.com/biothings/metadataplus/issues/new/choose">+ Suggest New Source</a>
       </p>
     </div>
     <div class="container text-light bg-about">
@@ -171,56 +171,6 @@
         <a class="btn btn-outline-light" target="_blank" rel="noreferrer" href="https://github.com/biothings/metadataplus/issues" data-size="large" aria-label="Issue biothings/metadataplus on GitHub">Click Here</a>
       </p>
     </div>
-    <!-- <div class="row mt-5 mb-5" data-aos="fade-in">
-      <div class="col-sm-12 col-md-6 m-auto">
-        <img src="@/assets/img/dde.svg" class="w-100 p-3">
-      </div>
-    </div>
-    <div class="container mt-5 mb-5 text-light" data-aos="fade-in">
-      <h1 class="text-sec mt-5 mb-5">Schema Creation and Metadata Discovery</h1>
-      <p>
-        A significant gap exists between the data providers and the data discovery portals where researchers look for relevant datasets. Data providers typically lack sufficient guides to expose their dataset metadata to these data portals. The <a href="https://discovery.biothings.io/" target="_blank" rel="noreferrer">Data Discovery Engine</a> is targeted to streamline and minimize the efforts from data providers while maximizing the data discoverability.
-      </p>
-      <p>
-        The Data Discovery Engine offers easy-to-use tools to create a custom schema and help you make your metadata findable:
-      </p>
-    </div>
-    <div class="container row m-auto">
-      <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
-        <div class="text-center p-3">
-          <img src="../assets/img/editor.png" alt="schema playground" class="w-50 d-block m-auto"/>
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center text-light">
-        <div data-aos="zoom-out">
-          <h3 class="text-sec">CREATE: Schema Playground</h3>
-          <p>
-            Choose an existing schema or use tools to easily create a new schema that fits your needs.
-          </p>
-          <p>
-            Learn more <a href="https://discovery.biothings.io/schema-playground" target="_blank" rel="noreferrer">here</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="container row m-auto">
-      <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
-        <div class="text-center p-3">
-          <img src="../assets/img/guide.png" alt="best practices" class="w-50 d-block m-auto"/>
-        </div>
-      </div>
-      <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center text-light">
-        <div data-aos="zoom-out">
-          <h3 class="text-sec">DISCOVERY: Best Practices Guide</h3>
-          <p>
-            Follow a desired strutured metadata schema based on Schema.org to make your data findable.
-          </p>
-          <p>
-            Learn more <a href="https://discovery.biothings.io/best-practices" target="_blank" rel="noreferrer">here</a>.
-          </p>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -243,7 +193,7 @@ export default {
 </script>
 
 <style type="text/css">
-  .redfigure{fill:#ED1C24;}
-  .purplefigure{fill:#7B7BDB;}
-  .purplefiguretop{fill:#7B7BDB;}
+  .redfigure{fill:#7f4285;}
+  .purplefigure{fill:#2f83a6;}
+  .purplefiguretop{fill:#2f83a6;}
 </style>

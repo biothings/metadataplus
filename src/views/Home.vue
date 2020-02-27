@@ -2,7 +2,7 @@
   <div>
     <div class="container-fluid hero bg-main text-center d-flex justify-content-center align-items-center">
       <div>
-        <img alt="metadataplus" src="../assets/img/logofull.svg" class="w-100"/>
+        <h1 class="logoTitle mainFont text-light">METADATA<span class="text-sec">PLUS</span></h1>
         <br />
         <h3 class="text-light font-weight-light"><a class="text-light" href="https://schema.org/" target="_blank" rel="noreferrer">Schema.org</a>-Standard Structured Metadata Injector</h3>
         <p class="mt-4 justify-content-center d-flex">
@@ -13,9 +13,9 @@
         </p>
       </div>
     </div>
-    <div class="bg-main-color jumbotron m-0">
+    <div class="bg-sec jumbotron m-0">
       <div class="container row m-auto">
-        <div class="col-sm-12 col-md-8  d-flex justify-content-center align-items-center">
+        <div class="col-sm-12 col-md-8  d-flex justify-content-center align-items-center text-light">
           <div>
             <p>
               Some data sources publish valuable dataset information on a format only readable by humans. If machines can't systematically find and understand this information, valuable contributions could be missed by related research efforts.
@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-    <div class="bg-sec jumbotron m-0">
+    <div class="bg-tri jumbotron m-0">
       <div class="container row m-auto">
         <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
           <div class="text-center">
@@ -41,22 +41,22 @@
             <h1 class="text-light">WHY SCHEMA.ORG<span class="text-main">?</span></h1>
           </div>
         </div>
-        <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center">
+        <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center text-light">
           <div>
             <p>
               Currently, there are many standards and schemas for marking up different types of information on web pages. As a result, it is difficult for webmasters to decide on the most relevant and supported markup standards to use.
             </p>
             <p>
-              <a class="text-light" href="https://schema.org/" target="_blank" rel="noreferrer">Schema.org</a> provides a widely accepted format regonizable by major search engines and data portals.
+              <a class="" href="https://schema.org/" target="_blank" rel="noreferrer">Schema.org</a> provides a widely accepted format regonizable by major search engines and data portals.
             </p>
             <p>
-              <a class="text-light" href="https://discovery.biothings.io/schema-playground" target="_blank">Creating a schema</a> supported by all the major search engines makes it easier for webmasters to add markup, which makes it easier for search engines to create rich search features for users.
+              <a class="" href="https://discovery.biothings.io/schema-playground" target="_blank">Creating a schema</a> supported by all the major search engines makes it easier for webmasters to add markup, which makes it easier for search engines to create rich search features for users.
             </p>
           </div>
         </div>
       </div>
     </div>
-    <div class="bg-main-color jumbotron m-0">
+    <div class="bg-main-light jumbotron m-0">
       <div class="container row m-auto">
         <div class="col-sm-12 col-md-8 d-flex justify-content-center align-items-center">
           <div>
@@ -77,10 +77,10 @@
       </div>
     </div>
     <div class="jumbotron card card-image m-0 bg-main bg-logo ">
-      <div class="text-white text-center py-5 px-4">
+      <div class="text-white text-center p-1">
         <div class="container p-2" style="background:rgba(0,0,0,.2)">
           <div class="pt-5 pb-5" data-aos="fade-up">
-            <h1 class="card-title h1-responsive pt-3 mb-5 font-bold mainFont"><strong>METADATA <span class="text-sec">PLUS</span></strong></h1>
+            <img alt="metadataplus" src="../assets/img/logofull.svg" class="w-50"/>
             <p class="mx-5">
               Some dataset web sources out there offer dataset information that is not optimized for machines to be able to find and understand.
             </p>

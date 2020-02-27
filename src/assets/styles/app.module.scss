@@ -1,6 +1,6 @@
-$secColor: #FF616D;
-$mainColor:#7A7ADC;
-$triColor: #444584;
+$secColor: #7f4285;
+$mainColor:#2f83a6;
+$triColor: #4F203A;
 
 html,body{
   scroll-behavior: smooth;
@@ -12,12 +12,21 @@ html,body{
   color: $mainColor !important;
 }
 
+.logoTitle{
+  font-size: 8vw !important;
+  text-shadow: black 2px 5px 10px;
+}
+
 .text-sec{
   color: $secColor !important;
 }
 
 .bg-main-light{
   background: lighten( $mainColor, 10% )
+}
+
+.bg-tri{
+  background: $triColor;
 }
 
 @for $i from 1 through 7 {
@@ -36,9 +45,9 @@ body>.expandable-image.expanded{
 
 .bg-grad{
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#444584+1,ff616d+48,444584+100&0+0,1+49,0+100 */
-  background: -moz-linear-gradient(left,  rgba($mainColor,0) 0%, rgba($mainColor,0.02) 1%, rgba($secColor,0.98) 48%, rgba($secColor,1) 49%, rgba($mainColor,0) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left,  rgba($mainColor,0) 0%,rgba($mainColor,0.02) 1%,rgba($secColor,0.98) 48%,rgba($secColor,1) 49%,rgba($mainColor,0) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right,  rgba($mainColor,0) 0%,rgba($mainColor,0.02) 1%,rgba($secColor,0.98) 48%,rgba($secColor,1) 49%,rgba($mainColor,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: -moz-linear-gradient(left,  rgba($mainColor,0) 0%, rgba($mainColor,0.02) 1%, rgba($triColor,0.98) 48%, rgba($triColor,1) 49%, rgba($mainColor,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba($mainColor,0) 0%,rgba($mainColor,0.02) 1%,rgba($triColor,0.98) 48%,rgba($triColor,1) 49%,rgba($mainColor,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba($mainColor,0) 0%,rgba($mainColor,0.02) 1%,rgba($triColor,0.98) 48%,rgba($triColor,1) 49%,rgba($mainColor,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00444584', endColorstr='#00444584',GradientType=1 ); /* IE6-9 */
 }
 
@@ -91,25 +100,4 @@ p{
 .simpleParallax{
   overflow: hidden;
   height: 300px;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 20px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: $triColor;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $mainColor;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: lighten($mainColor,10%);
 }

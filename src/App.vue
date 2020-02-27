@@ -23,8 +23,8 @@ export default {
 <style lang="scss">
  @import './assets//styles/app.module.scss';
  .hero{
-   background-image: url('~@/assets/img/back.svg');
-   background-position: bottom;
+   background-image: url('~@/assets/img/back.jpg');
+   background-position: center;
    background-size: cover;
    position: relative;
    min-height: 100vh;
