@@ -113,7 +113,7 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
         html = BeautifulSoup("""
         <nav class="navbar navbar-expand-md navbar-dark bg-main fixed-top p-3" style="border-bottom: 8px #ff616d solid;">
             <a class="navbar-brand" href="https://metadataplus.biothings.io/">
-                <img src="https://metadataplus.biothings.io/img/logosimple.54090637.svg" width="30" height="30" alt="logo">
+                <img src="http://metadataplus.biothings.io/img/logosimple.f39f88c2.svg" width="30" height="30" alt="logo">
             </a>
             <a id="logo" style="font-family: Lilita One,sans-serif;font-size: 1.5em;" class="navbar-brand mainFont font-weight-bold caps text-light" href="https://metadataplus.biothings.io/">METADATA<span class="text-sec">PLUS</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -144,26 +144,26 @@ class NCBIGeoDatasetWrapper(tornado.web.RequestHandler):
                     padding-top: 120px !important;
                 }
                 .text-main {
-                	color: #7a7adc!important
+                	color: #17718C!important
                 }
 
                 .text-sec {
-                	color: #ff616d!important
+                	color: #7E4185!important
                 }
                 .mainFont {
                 	font-family: Lilita One, sans-serif
                 }
 
                 .bg-main {
-                	background: #333362
+                	background: #2B111F
                 }
 
                 .bg-main-color {
-                	background: #7a7adc
+                	background: #17718C
                 }
 
                 .bg-sec {
-                	background: #ff616d
+                	background: #7E4185
                 }
                 .ui-helper-reset {
                     opacity: 0 !important;

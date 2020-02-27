@@ -71,11 +71,11 @@ class PlusWrapper(tornado.web.RequestHandler):
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
             <style>
                 .text-main {{
-                	color: #7a7adc!important
+                	color: #17718C!important
                 }}
 
                 .text-sec {{
-                	color: #ff616d!important
+                	color: #7E4185!important
                 }}
 
                 .mainFont {{
@@ -83,15 +83,15 @@ class PlusWrapper(tornado.web.RequestHandler):
                 }}
 
                 .bg-main {{
-                	background: #333362
+                	background: #2B111F
                 }}
 
                 .bg-main-color {{
-                	background: #7a7adc
+                	background: #17718C
                 }}
 
                 .bg-sec {{
-                	background: #ff616d
+                	background: #7E4185
                 }}
 
                 .ui-helper-reset {{
@@ -106,7 +106,7 @@ class PlusWrapper(tornado.web.RequestHandler):
           <body class="body-back row m-0">
               <nav class="navbar navbar-expand-md navbar-dark bg-main p-3 col-sm-12" style="border-bottom: 8px #ff616d solid;">
                   <a class="navbar-brand" href="https://metadataplus.biothings.io/">
-                      <img src="https://metadataplus.biothings.io/img/logosimple.54090637.svg" width="30" height="30" alt="logo">
+                      <img src="http://metadataplus.biothings.io/img/logosimple.f39f88c2.svg" width="30" height="30" alt="logo">
                   </a>
                   <a id="logo" style="font-family: Lilita One,sans-serif;font-size: 1.5em;" class="navbar-brand mainFont font-weight-bold caps text-light" href="https://metadataplus.biothings.io/">METADATA<span class="text-sec">PLUS</span></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
