@@ -20,7 +20,7 @@
         <h5 class="text-uppercase">Data Discovery Engine</h5>
         <ul class="list-unstyled">
           <li>
-            <a href="https://discovery.biothings.io/schema-playground" target="_blank">Create a shema</a>
+            <a href="https://discovery.biothings.io/schema-playground" target="_blank">Create a schema</a>
           </li>
           <li>
             <a href="https://discovery.biothings.io/best-practices" target="_blank">Metadata discovery</a>
